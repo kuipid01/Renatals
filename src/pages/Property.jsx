@@ -44,15 +44,15 @@ const Property = () => {
   return (
     <div className="mt-[7rem]">
       {imageScaled === "" ? "" : <ScaledImage img={imageScaled} />}
-      <section className=" w-5/6 mx-auto gap-[2rem] h-[80vh] flex ">
+      <section className=" w-5/6 mx-auto gap-[2rem] h-fit min:h-[80vh] flex md:flex-row flex-col ">
         <img
-          className="w-2/5 object-cover rounded-lg"
+          className="md:w-2/5 w-full object-cover rounded-lg"
           src="/assets/house2.jpg"
           alt=""
         />
-        <div className="flex-1 gap-4 flex flex-col">
+        <div className="md:flex-1 w-full gap-4 flex flex-col">
           <div className="flex justify-between items-center">
-            <span className="flex-1 text-4xl text-primary font-light">
+            <span className="flex-1 text-xl md:text-4xl text-primary font-light">
               Two Bedroom flat detached apartment
             </span>
             <div className="w-1/4 flex">
@@ -85,9 +85,9 @@ const Property = () => {
               </div>
 
               {bwidth.index === 1 ? (
-                <p className="py-3 text-xl text-secondary capitalize" ame>
+                <p className="py-3 text-base md:text-xl text-secondary capitalize" ame>
                   {" "}
-                  Type of rent range not avilable for this property
+                  Type of rent range not available for this property
                 </p>
               ) : bwidth.index === 2 ? (
                 <p className="py-3 text-5xl text-secondary capitalize">
@@ -106,13 +106,13 @@ const Property = () => {
             <p className="text-xl text-primary mb-1">Location: <span>Ajegunle, Lagos Nigeria</span></p>
 
           </div>
-          <div className="flex   gap-2 ">
+          <div className="flex md:flex-row flex-col w-full  gap-2 ">
             {" "}
-            <button className="bg-secondary w-1/3 py-2 font-semibold gap-2 transition duration-200 ease-in-out justify-center   focus-within:outline focus-within:text-secondary hover:scale-95 focus-within:outline-secondary focus-within:bg-transparent flex items-center text-white rounded-md outline-none">
+            <button className="bg-secondary w-full md:w-1/3 py-2 font-semibold gap-2 transition duration-200 ease-in-out justify-center   focus-within:outline focus-within:text-secondary hover:scale-95 focus-within:outline-secondary focus-within:bg-transparent flex items-center text-white rounded-md outline-none">
               {" "}
               <AiOutlineBook /> Book Apartment
             </button>{" "}
-            <button className="bg-secondary w-1/3 py-3 font-semibold gap-2 transition duration-200 ease-in-out justify-center  focus-within:outline focus-within:text-secondary hover:scale-95 focus-within:outline-secondary focus-within:bg-transparent flex items-center text-white rounded-md outline-none">
+            <button className="bg-secondary w-full md:w-1/3 py-3 font-semibold gap-2 transition duration-200 ease-in-out justify-center  focus-within:outline focus-within:text-secondary hover:scale-95 focus-within:outline-secondary focus-within:bg-transparent flex items-center text-white rounded-md outline-none">
               {" "}
               <AiOutlineMessage />
               Message Lister
@@ -120,7 +120,7 @@ const Property = () => {
           </div>
         </div>
       </section>
-      <div className="w-3/5 mt-[5rem] pl-[5rem]">
+      <div className="md:w-3/5 w-full mt-[2rem] md:mt-[5rem] px-4 md:pl-[5rem]">
         <ul className="w-full flex py-2 justify-between  mx-auto">
           <li
             className={`cursor-pointer hover:text-secondary p-2 ${
@@ -139,7 +139,7 @@ const Property = () => {
             Ratings
           </li>
           <li
-            className={`cursor-pointer hover:text-secondary ${
+            className={`cursor-pointer hover:text-secondary p-2 ${
               descwidth.index === 3 ? "text-black" : "text-gray-500"
             }`}
             onClick={() => handleDescWidth(3)}
@@ -157,7 +157,7 @@ const Property = () => {
 
       {descwidth.index === 1 ? (
         <p
-          className="py-3 w-3/5  pl-[5rem] text-base font-light leading-10 text-black capitalize"
+          className="py-3 w-full md:w-3/5 px-[1rem] md:pl-[5rem] text-base font-light leading-10 text-black capitalize"
           ame
         >
           {" "}
@@ -167,17 +167,17 @@ const Property = () => {
           deserunt fugiat vero.
         </p>
       ) : descwidth.index === 2 ? (
-        <div className=" overflow-y-auto p-1 py-3 w-[90%] flex flex-col  pl-[5rem] scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-blue-200 h-auto  max-h-[60vh] ">
+        <div className=" overflow-y-auto p-1 py-3 w-[99%] md:w-[90%] flex flex-col  px-[1rem] md:pl-[5rem] scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-blue-200 h-auto  max-h-[60vh] ">
           <div className="flex mb-[3rem] justify-between items-center">
-            <span className="w-fit  text-5xl font-extrabold p-2">Reviews</span>{" "}
-            <span className="w-[60%] h-fit rounded-full bg-gray-200 items-end justify-end">
+            <span className="w-fit text-xl sm:text-2xl  md:text-5xl font-extrabold p-2">Reviews</span>{" "}
+            <span className="w-full md:w-[60%] h-fit rounded-full bg-gray-200 items-end justify-end">
               <hr
                 className="h-[7px] rounded-full bg-secondary"
                 style={{ width: widthReview }}
               />
             </span>
-            <span className="text-2xl w-[10%] relative font-semibold">
-              4.8/ <span className="absolute top-2">5</span>{" "}
+            <span className="md:text-2xl text-base w-[20%] flex md:w-[10%] relative font-semibold">
+              4.8/ <span className="md:absolute md:top-2">5</span>{" "}
             </span>
           </div>
           <div className="w-full px-5">
@@ -187,7 +187,7 @@ const Property = () => {
           </div>
         </div>
       ) : descwidth.index === 3 ? (
-        <p className="py-3 w-3/5  pl-[5rem] text-5xl text-black capitalize">
+        <p className="py-3 w-full md:w-3/5 px-[1rem]  md:pl-[5rem] text-2xl md:text-5xl text-black capitalize">
           <Amenities />
         </p>
       ) : (
@@ -196,10 +196,10 @@ const Property = () => {
       <p className="text-left pl-3 text-2xl text-primary font-light mb-4">
         Image Gallery
       </p>
-      <div className="imageGallery w-full p-5 h-screen gap-[24px] flex items-center justify-center flex-wrap ">
+      <div className="imageGallery w-full p-5 h-fit md:h-screen gap-[24px] flex items-center justify-center flex-wrap ">
         {[1, 2, 3, 4, 5, 6].map((item) => (
           <div
-            className="w-[var(--card-width)] h-1/2 rounded overflow-hidden relative"
+            className="w-full md:w-[var(--card-width)] h-1/2 rounded overflow-hidden relative"
             key={item}
           >
             <AiOutlineExpand
