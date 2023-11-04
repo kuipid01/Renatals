@@ -8,7 +8,7 @@ const Tab1 = ({values,tags,setTags,deleteFromArray,setValues,addToarray}) => {
           {/* <label className="flex-4 text-lg text-black font-bold" htmlFor="title"> Rental Title</label> */}
           <input
             type="text"
-            className="flex-1 px-2 py-5 border outline-none rounded-md shadow-md shadow-gray-400 text-2xl text-gray-500"
+            className="w-full px-2 py-5 border outline-none rounded-md shadow-md shadow-gray-400 text-2xl text-gray-500"
             placeholder="Enter Rental Title"
           />
         </div>
@@ -36,7 +36,7 @@ const Tab1 = ({values,tags,setTags,deleteFromArray,setValues,addToarray}) => {
             placeholder="Enter Keywords that will enable your product show easily"
             type="text"
           />
-          <div className="w-full flex gap-3">
+          <div className="w-full flex flex-wrap justify-center gap-3">
             {tags?.map((item, index) => (
               <div
                 key={index}

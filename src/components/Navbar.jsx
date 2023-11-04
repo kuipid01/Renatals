@@ -45,7 +45,7 @@ const Navbar = () => {
         initial={{ opacity: 0, y: "-100%" }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: "-100%" }}
-        className={`flex z-[99999] px-[20px] flex-col lg:hidden left-0 absolute bottom top-full w-full h-fit py-10 gap-5 text-gray-200 bg-black items-center font-medium uppercase`}
+        className={`flex z-[99999] px-[20px] flex-col lg:hidden left-0 absolute bottom top-full w-full h-fit py-10 gap-5 text-gray-800 bg-white shadow-md items-center font-medium uppercase`}
       >
         <Link className="w-full" to="/">
           <li
@@ -85,7 +85,7 @@ const Navbar = () => {
         >
           Contact
         </li>
-        <Link to="/search">
+        <Link onClick={() => setMobile(!mobile)} to="/search">
           <AiOutlineSearch className="text-2xl  cursor-pointer hover:text-secondary transition-all" />
         </Link>
       </motion.ul>
@@ -94,21 +94,22 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed top-0 left-1/2 transform -translate-x-1/2 z-10 transition-all w-full sm:w-[95%] lg:w-[90%] h-[12vh] px-4 ${
+      className={`fixed top-0 left-1/2 transform -translate-x-1/2 z-10 transition-all w-full sm:w-[95%] lg:w-[90%] h-[10vh] px-4 ${
         navTrans ? "bg-primary" : "bg-white shadow-xl"
       } flex justify-between items-center`}
     >
-      <div className="w-[80px] overflow-hidden object-contain h-[60%] ">
-        {" "}
-        <img
-          src={` ${
-            !navTrans ? "/assets/logoSec.png" : "/assets/logoWhite.png"
-          }`}
-          alt="Logo"
-          className="w-full  object-contain h-full "
-        />
-      </div>
-
+      <Link className="w-[70px] overflow-hidden object-contain h-[50%] " to='/'>
+     
+          {" "}
+          <img
+            src={` ${
+              !navTrans ? "/assets/logoSec.png" : "/assets/logoWhite.png"
+            }`}
+            alt="Logo"
+            className="w-full  object-contain h-full "
+          />
+      
+      </Link>
       <ul
         className={`hidden lg:flex  gap-3 text-lg ${
           navTrans ? "text-white" : "text-black"
@@ -256,9 +257,7 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {mobile && <NavMobile  />}
-      </AnimatePresence>
+      <AnimatePresence>{mobile && <NavMobile />}</AnimatePresence>
     </div>
   );
 };

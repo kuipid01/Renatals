@@ -7,15 +7,16 @@ const Popular = () => {
   const isInView = useInView(ref, { once: true });
   const headerTextVariant = {
     initial: {
-      y: "100%",
+      y: "10%",
+      opacity:0,
       clipPath: "polygon( 0 100%, 100% 100%, 100% 100%, 0% 100% )",
     },
     animate: {
       y: 0,
       clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-
+opacity:1,
       transition: {
-        duration: 1,
+        duration: .5,
       },
     },
   };
