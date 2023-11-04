@@ -159,7 +159,7 @@ const Navbar = () => {
         <Link
           className={`hover:border-2 transition-all ${
             !navTrans ? "hover:text-secondary" : ""
-          } hover:border-secondary flex items-center hover:bg-transparent h-3/4 w-fit px-6 rounded-lg bg-secondary font-semibold text-white`}
+          } hover:border-secondary flex items-center hover:bg-transparent h-2/4 w-fit px-6 rounded-lg bg-secondary font-semibold text-white`}
           to="/login"
         >
           GET STARTED

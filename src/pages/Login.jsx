@@ -64,7 +64,7 @@ const Login = () => {
                 id="email"
                 name="email"
                 placeholder="Enter Email"
-                className="p-2 pl-[30px] md:pl-5 bg-gray-300/20 border-2 border-white rounded-md md:rounded-[0] px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
+                className="p-2 pl-[30px] text-white md:pl-5 bg-gray-300/20 border-2 border-white rounded-md md:rounded-[0] py-2 px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
                 {...register("email")}
               />
             </div>
@@ -84,7 +84,7 @@ const Login = () => {
                 name="password"
                 {...register("password")}
                 placeholder="Enter Password"
-                className="p-2 pl-[30px] md:pl-5 bg-gray-300/20 border-2 border-white rounded-md md:rounded-[0] px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
+                className="p-2 pl-[30px] text-white md:pl-5 bg-gray-300/20 border-2 py-2 border-white rounded-md md:rounded-[0] px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
               />
               {passwordVisible ? (
                 <AiOutlineEye
@@ -107,7 +107,7 @@ const Login = () => {
           </div>
 
           <button
-            className="w-full bg-secondary text-white py-2 rounded-lg"
+            className="w-full bg-secondary text-white py-2 h-[50px] md:h-auto rounded-lg"
             type="submit"
           >
             Submit

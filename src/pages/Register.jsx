@@ -65,7 +65,7 @@ const Register = () => {
                 id="email"
                 name="email"
                 placeholder="Enter Email"
-                className="p-2 pl-[30px] md:pl-5 bg-gray-300/20 border-2 border-white rounded-md  px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
+                className="p-2 pl-[30px] py-2 md:py-auto md:pl-5 bg-gray-300/20 border-2 border-white rounded-md  px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
                 {...register("email")}
               />
             </div>
@@ -87,7 +87,7 @@ const Register = () => {
                 id="firstname"
                 name="firstname"
                 placeholder="Enter Firstname"
-                className="p-2 pl-[30px] md:pl-5 bg-gray-300/20 border-2 border-white rounded-md  px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
+                className="p-2 pl-[30px] py-2 md:py-auto md:pl-5 bg-gray-300/20 border-2 border-white rounded-md  px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
                 {...register("firstname")}
               />
             </div>
@@ -106,7 +106,7 @@ const Register = () => {
                 id="lastname"
                 name="lastname"
                 placeholder="Enter Lastname"
-                className="p-2 pl-[30px] md:pl-5 bg-gray-300/20 border-2 border-white rounded-md  px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
+                className="p-2 pl-[30px] py-2 md:py-auto md:pl-5 bg-gray-300/20 border-2 border-white rounded-md  px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
                 {...register("lastname")}
               />
             </div>
@@ -127,7 +127,7 @@ const Register = () => {
                 name="password"
                 {...register("password")}
                 placeholder="Enter Password"
-                className="p-2 pl-[30px] md:pl-5 bg-gray-300/20 border-2 border-white rounded-md  px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
+                className="p-2 pl-[30px] py-2 md:py-auto md:pl-5 bg-gray-300/20 border-2 border-white rounded-md  px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
               />
               {passwordVisible ? (
                 <AiOutlineEye
@@ -157,7 +157,7 @@ const Register = () => {
                 name="confirmPassword"
                 {...register("confirmPassword")}
                 placeholder="Enter Password again"
-                className="p-2 pl-[30px] md:pl-5 bg-gray-300/20 border-2 border-white rounded-md  px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
+                className="p-2 pl-[30px] py-2 md:py-auto md:pl-5 bg-gray-300/20 border-2 border-white rounded-md  px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
               />
              
             </div>
