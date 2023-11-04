@@ -7,7 +7,7 @@ import {
 } from "react-icons/ai";
 const Sellerdashboard = () => {
   return (
-    <div className="w-full py-[7rem] bg-gray-100/50 min-h-screen  flex flex-col md:flex-row  justify-between px-[2rem] h-fit">
+    <div className="w-full py-[12vh] bg-gray-100/50 min-h-screen  flex flex-col md:flex-row  justify-between px-[2rem] h-fit">
       <div className="w-full md:w-2/6 flex flex-col">
         <div className="w-full border-[1px] border-gray-400 p-[2rem] shadow gap-2 items-center  flex flex-col">
           <img

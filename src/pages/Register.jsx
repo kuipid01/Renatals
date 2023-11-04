@@ -39,7 +39,7 @@ const Register = () => {
   const navigate = useNavigate()
   return (
     <div className="w-full relative h-screen flex justify-between">
-       <AiOutlineArrowLeft onClick={() => navigate(-1)} className='absolute z-[9999] left-2 top-2 text-xl cursor-pointer font-semibold text-secondary'/>
+       <AiOutlineArrowLeft onClick={() => navigate(-1)} className='absolute z-[9999] left-4 top-4  cursor-pointer  text-3xl font-semibold text-secondary'/>
       <div className="w-full absolute top-0 left-0 md:relative md:w-1/2  flex justify-center items-center h-full  ">
         <img
           src="/assets/house1.jpg"

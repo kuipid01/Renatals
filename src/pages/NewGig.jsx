@@ -38,11 +38,11 @@ const NewGig = () => {
   };
   console.log(active);
   return (
-    <div className="pt-[7rem]">
+    <div className="pt-[13vh]">
       <ul className="w-full flex justify-evenly border-y border-gray-300 px-1 md:px-[10%] py-3 mx-auto ">
-        <li className="flex gap-3 items-center font-semibold ">
+        <li className="flex gap-1 md:gap-3 items-center font-semibold ">
           <div
-            className={`w-[30px] h-[30px] grid place-content-center text-white ${
+            className={`md:w-[30px] md:h-[30px] px-1 text-[10px] grid place-content-center text-white ${
               active === 0 ? "bg-primary " : "bg-gray-300"
             } rounded-full`}
           >
@@ -51,15 +51,15 @@ const NewGig = () => {
           <span
             className={` ${
               active === "1" ? "text-black" : "text-gray-400"
-            } font-bold`}
+            } text-xs font-light md:font-bold`}
           >
             Overview
           </span>
-          <AiOutlineArrowRight className="text-gray-500" />
+          <AiOutlineArrowRight className="text-gray-500 hidden md:flex" />
         </li>
-        <li className="flex gap-3 items-center font-semibold ">
+        <li className="flex gap-1 md:gap-3 items-center font-semibold ">
           <div
-            className={`w-[30px] h-[30px] grid place-content-center text-white ${
+            className={`md:w-[30px] md:h-[30px] px-1 text-[10px] grid place-content-center text-white ${
               active === 1 ? "bg-primary " : "bg-gray-300"
             } rounded-full`}
           >
@@ -68,15 +68,15 @@ const NewGig = () => {
           <span
             className={` ${
               active === "2" ? "text-black" : "text-gray-400"
-            } font-bold`}
+            } text-xs font-light md:font-bold`}
           >
             Desription
           </span>
-          <AiOutlineArrowRight className="text-gray-500" />
+          <AiOutlineArrowRight className="text-gray-500 hidden md:flex" />
         </li>
-        <li className="flex gap-3 items-center font-semibold ">
+        <li className="flex gap-1 md:gap-3 items-center font-semibold ">
           <div
-            className={`w-[30px] h-[30px] grid place-content-center text-white ${
+            className={`md:w-[30px] md:h-[30px] px-1 text-[10px] grid place-content-center text-white ${
               active === 2 ? "bg-primary " : "bg-gray-300"
             } rounded-full`}
           >
@@ -85,15 +85,15 @@ const NewGig = () => {
           <span
             className={` ${
               active === "3" ? "text-black" : "text-gray-400"
-            } font-bold`}
+            } text-xs font-light md:font-bold`}
           >
             Amenities
           </span>
-          <AiOutlineArrowRight className="text-gray-500" />
+          <AiOutlineArrowRight className="text-gray-500 hidden md:flex" />
         </li>
-        <li className="flex gap-3 items-center font-semibold ">
+        <li className="flex gap-1 md:gap-3 items-center font-semibold ">
           <div
-            className={`w-[30px] h-[30px] grid place-content-center text-white ${
+            className={`md:w-[30px] md:h-[30px] px-1 text-[10px] grid place-content-center text-white ${
               active === 3 ? "bg-primary " : "bg-gray-300"
             } rounded-full`}
           >
@@ -102,15 +102,15 @@ const NewGig = () => {
           <span
             className={` ${
               active === "4" ? "text-black" : "text-gray-400"
-            } font-bold`}
+            } text-xs font-light md:font-bold`}
           >
             Gallery
           </span>
-          <AiOutlineArrowRight className="text-gray-500" />
+          <AiOutlineArrowRight className="text-gray-500 hidden md:flex" />
         </li>
-        <li className="flex gap-3 items-center font-semibold ">
+        <li className="flex gap-1 md:gap-3 items-center font-semibold ">
           <div
-            className={`w-[30px] h-[30px] grid place-content-center text-white ${
+            className={`md:w-[30px] md:h-[30px] px-1 text-[10px] grid place-content-center text-white ${
               active === 4 ? "bg-primary " : "bg-gray-300"
             } rounded-full`}
           >
@@ -119,17 +119,19 @@ const NewGig = () => {
           <span
             className={` ${
               active === "5" ? "text-black" : "text-gray-400"
-            } font-bold`}
+            } text-xs font-light md:font-bold`}
           >
             Pricing
           </span>
-          <AiOutlineArrowRight className="text-gray-500" />
+          <AiOutlineArrowRight className="text-gray-500 hidden md:flex" />
         </li>
-        <button className="px-3  py-1 border rounded-md text-black font-bold hover:bg-gray-300 capitalize  text-2xl transition ease-in-out duration-200">
+        <button className="px-3 hidden md:flex  py-1 border rounded-md text-black font-bold hover:bg-gray-300 capitalize  text-2xl transition ease-in-out duration-200">
           save
         </button>
       </ul>
-
+      <button className="px-3 mt-[1rem] ml-[1rem] flex md:hidden  py-1 border rounded-md text-black font-bold hover:bg-gray-300 capitalize  text-2xl transition ease-in-out duration-200">
+          save
+        </button>
       {active === 0 && (
         <Tab1
           tags={tags}
@@ -155,7 +157,7 @@ const NewGig = () => {
         )}
         <button
           onClick={() => changePage()}
-          className="px-5 py-2 h-[50px] text-white rounded-md hover:bg-secondary/80 transition-all bg-secondary"
+          className="px-3 md:px-5 py-2 h-[50px] text-sm md:text-base text-white rounded-md hover:bg-secondary/80 transition-all bg-secondary"
         >
           Save and Continue
         </button>

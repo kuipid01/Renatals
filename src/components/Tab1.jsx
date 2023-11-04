@@ -2,9 +2,9 @@ import React from "react";
 import {  AiOutlineClose } from "react-icons/ai";
 const Tab1 = ({values,tags,setTags,deleteFromArray,setValues,addToarray}) => {
   return (
-    <div className="shadow-md w-[80%] p-2 py-5 mx-auto border mt-[4rem] min-h-screen bg-white">
+    <div className="shadow-md  w-[98%] md:w-[80%] p-2 py-5 mx-auto border mt-[4rem] min-h-screen bg-white">
       <form className="w-[90%] mx-auto flex flex-col gap-10" action="">
-        <div className="w-full flex  gap-2 items-center text-gray-500">
+        <div className="w-full flex  items-center text-gray-500">
           {/* <label className="flex-4 text-lg text-black font-bold" htmlFor="title"> Rental Title</label> */}
           <input
             type="text"
