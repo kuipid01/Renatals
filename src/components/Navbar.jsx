@@ -83,11 +83,15 @@ const Navbar = () => {
         navTrans ? "bg-primary" : "bg-white shadow-xl"
       } flex justify-between items-center`}
     >
-      <img
-        src="/assets/logo.png"
-        alt="Logo"
-        className="w-[100px] h-auto bg-black"
-      />
+      <div className="w-[80px] overflow-hidden object-contain h-[60%] ">
+        {" "}
+        <img
+          src={` ${!navTrans ? "/assets/logoSec.png" : "/assets/logoWhite.png"}`}
+          alt="Logo"
+          className="w-full  object-contain h-full "
+        />
+      </div>
+
       <ul
         className={`hidden lg:flex  gap-3 text-lg ${
           navTrans ? "text-white" : "text-black"
