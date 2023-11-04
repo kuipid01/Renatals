@@ -7,11 +7,22 @@ import {
   AiOutlineNotification,
   AiOutlineSearch,
 } from "react-icons/ai";
+import { motion, AnimatePresence } from "framer-motion";
 const Navbar = () => {
   const [navTrans, setnavTrans] = useState(true);
   const [userOnline, setuserOnline] = useState(true);
   const [dropDown, setdropDown] = useState(false);
   const [mobile, setMobile] = useState(false);
+  const handleToggleProfile = () => {
+    setMobile(false);
+    setdropDown(!dropDown);
+  };
+
+  const toggleProfileMenu = () => {
+    setdropDown(false);
+    // Close the mobile menu when opening the profile menu
+    setMobile(!mobile);
+  };
   useEffect(() => {
     return () => {
       const checkScroll = () => {
@@ -30,8 +41,11 @@ const Navbar = () => {
 
   const NavMobile = () => {
     return (
-      <ul
-        className={`flex z-[99999] px-3 flex-col lg:hidden left-0 absolute bottom top-full w-full h-fit py-10 gap-5 text-gray-600 bg-white items-center font-medium uppercase`}
+      <motion.ul
+        initial={{ opacity: 0, y: "-100%" }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: "-100%" }}
+        className={`flex z-[99999] px-[20px] flex-col lg:hidden left-0 absolute bottom top-full w-full h-fit py-10 gap-5 text-gray-200 bg-black items-center font-medium uppercase`}
       >
         <Link className="w-full" to="/">
           <li
@@ -74,9 +88,10 @@ const Navbar = () => {
         <Link to="/search">
           <AiOutlineSearch className="text-2xl  cursor-pointer hover:text-secondary transition-all" />
         </Link>
-      </ul>
+      </motion.ul>
     );
   };
+
   return (
     <div
       className={`fixed top-0 left-1/2 transform -translate-x-1/2 z-10 transition-all w-full sm:w-[95%] lg:w-[90%] h-[12vh] px-4 ${
@@ -86,7 +101,9 @@ const Navbar = () => {
       <div className="w-[80px] overflow-hidden object-contain h-[60%] ">
         {" "}
         <img
-          src={` ${!navTrans ? "/assets/logoSec.png" : "/assets/logoWhite.png"}`}
+          src={` ${
+            !navTrans ? "/assets/logoSec.png" : "/assets/logoWhite.png"
+          }`}
           alt="Logo"
           className="w-full  object-contain h-full "
         />
@@ -142,7 +159,7 @@ const Navbar = () => {
             </div>
           </Link>
           <div
-            onClick={() => setdropDown(!dropDown)}
+            onClick={handleToggleProfile}
             className="w-fit cursor-pointer flex justify-center items-center relative  h-fit"
           >
             <div className="w-2 h-2 rounded-full absolute bottom-0  text-xs right-1 p-1 flex justify-center items-center  shadow bg-white">
@@ -169,71 +186,79 @@ const Navbar = () => {
       {mobile ? (
         <AiOutlineClose
           onClick={() => setMobile(!mobile)}
-          className={` lg:hidden text-3xl  ${
+          className={` cursor-pointer lg:hidden text-3xl  ${
             !navTrans ? "text-gray-800" : ""
           } text-gray-200`}
         />
       ) : (
         <AiOutlineMenu
-          onClick={() => setMobile(!mobile)}
-          className={` lg:hidden text-3xl  ${
+          onClick={toggleProfileMenu}
+          className={` cursor-pointer lg:hidden text-3xl  ${
             !navTrans ? "text-gray-800" : ""
           } text-gray-200`}
         />
       )}
-
-      {dropDown && (
-        <div className="flex flex-col gap-[20px] absolute  shadow border top-[90%] bg-white right-2 py-[20px] px-4">
-          <Link
-            to="/user/kuipid/dashboard"
-            onClick={() => setdropDown(!dropDown)}
+      <AnimatePresence>
+        {dropDown && (
+          <motion.div
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "-100%" }}
+            className="flex flex-col gap-[20px] absolute  shadow border top-[90%] bg-white right-2 py-[20px] px-4"
           >
-            <div className="flex  gap-[20px] items-center justify-between">
-              <img
-                src="/assets/house1.jpg"
-                className="w-[50px] h-[50px] object-cover rounded-full "
-                alt=""
-              />
+            <Link
+              to="/user/kuipid/dashboard"
+              onClick={() => setdropDown(!dropDown)}
+            >
+              <div className="flex  gap-[20px] items-center justify-between">
+                <img
+                  src="/assets/house1.jpg"
+                  className="w-[50px] h-[50px] object-cover rounded-full "
+                  alt=""
+                />
 
-              <div className="flex flex-col">
-                <h1 className="text-black ">Kuipid Adegoke</h1>
-                <p className="text-gray-600 text-sm ">Kuipid@gmail.com</p>
+                <div className="flex flex-col">
+                  <h1 className="text-black ">Kuipid Adegoke</h1>
+                  <p className="text-gray-600 text-sm ">Kuipid@gmail.com</p>
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>
 
-          <ul className=" border-y border-gray-200 py-4 flex flex-col gap-3 text-gray-500">
-            <li
-              onClick={() => setdropDown(!dropDown)}
-              className="py-2 px-[15px] hover:bg-gray-300 hover:text-gray-700 cursor-pointer transition ease-in-out "
-            >
-              Profile
-            </li>
-            <li
-              onClick={() => setdropDown(!dropDown)}
-              className="py-2 px-[15px] hover:bg-gray-300 hover:text-gray-700 cursor-pointer transition ease-in-out "
-            >
-              Settings
-            </li>
-            <li
-              onClick={() => setdropDown(!dropDown)}
-              className="py-2 px-[15px] hover:bg-gray-300 hover:text-gray-700 cursor-pointer transition ease-in-out "
-            >
-              Billings aand Payment
-            </li>
-          </ul>
-          <ul className=" border-y border-gray-200 py-4 gap-3 text-gray-500">
-            <li
-              onClick={() => setdropDown(!dropDown)}
-              className="py-2 px-[15px] hover:bg-gray-300 hover:text-gray-700 cursor-pointer transition ease-in-out "
-            >
-              Logout
-            </li>
-          </ul>
-        </div>
-      )}
+            <ul className=" border-y border-gray-200 py-4 flex flex-col gap-3 text-gray-500">
+              <li
+                onClick={() => setdropDown(!dropDown)}
+                className="py-2 px-[15px] hover:bg-gray-300 hover:text-gray-700 cursor-pointer transition ease-in-out "
+              >
+                Profile
+              </li>
+              <li
+                onClick={() => setdropDown(!dropDown)}
+                className="py-2 px-[15px] hover:bg-gray-300 hover:text-gray-700 cursor-pointer transition ease-in-out "
+              >
+                Settings
+              </li>
+              <li
+                onClick={() => setdropDown(!dropDown)}
+                className="py-2 px-[15px] hover:bg-gray-300 hover:text-gray-700 cursor-pointer transition ease-in-out "
+              >
+                Billings aand Payment
+              </li>
+            </ul>
+            <ul className=" border-y border-gray-200 py-4 gap-3 text-gray-500">
+              <li
+                onClick={() => setdropDown(!dropDown)}
+                className="py-2 px-[15px] hover:bg-gray-300 hover:text-gray-700 cursor-pointer transition ease-in-out "
+              >
+                Logout
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {mobile && <NavMobile />}
+      <AnimatePresence>
+        {mobile && <NavMobile  />}
+      </AnimatePresence>
     </div>
   );
 };
