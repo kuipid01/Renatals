@@ -1,0 +1,23 @@
+.thin-curved-line {
+    position: relative;
+    width: 200px;
+    height: 1px; /* Adjust the height to make it thinner or thicker */
+    background-color: #333; /* Line color */
+  }
+  
+  .thin-curved-line::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Creates the curve */
+    background-color: #333; /* Line color */
+    top: 0;
+    left: 0;
+  }
+  
+
+
+  
+
+  
