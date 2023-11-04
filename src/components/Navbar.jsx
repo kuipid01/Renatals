@@ -27,7 +27,7 @@ const Navbar = () => {
       };
     };
   }, [window.scrollY]);
-  console.log(mobile);
+
   const NavMobile = () => {
     return (
       <ul
@@ -79,7 +79,7 @@ const Navbar = () => {
   };
   return (
     <div
-      className={`fixed top-0 left-1/2 transform -translate-x-1/2 z-10 transition-all w-full sm:w-[95%] lg:w-[90%] h-16 px-4 ${
+      className={`fixed top-0 left-1/2 transform -translate-x-1/2 z-10 transition-all w-full sm:w-[95%] lg:w-[90%] h-[12vh] px-4 ${
         navTrans ? "bg-primary" : "bg-white shadow-xl"
       } flex justify-between items-center`}
     >
@@ -126,7 +126,7 @@ const Navbar = () => {
           <div className="w-fit flex justify-center items-center relative  h-fit">
             <span className="w-1 h-1 rounded-full absolute -top-1 bg-secondary -right-1"></span>
             <AiOutlineNotification
-              className={` ${!navTrans ? "" : "text-white"} text-xl font-bold`}
+              className={` ${!navTrans ? "" : "text-white"} text-3xl font-bold`}
             />
           </div>
           <Link to="/inbox">
@@ -137,7 +137,7 @@ const Navbar = () => {
               <AiOutlineMessage
                 className={` ${
                   !navTrans ? "" : "text-white"
-                } text-xl font-bold`}
+                } text-3xl font-bold`}
               />
             </div>
           </Link>

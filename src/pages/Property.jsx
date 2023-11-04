@@ -33,10 +33,19 @@ const Property = () => {
     // console.log(img);
     return (
       <div className=" fixed left-0 flex justify-center items-center top-0 w-full h-full  z-[99999] ">
-      
-        <div onClick={() => setImageScaled("")} className="w-full h-full absolute top-0 left-0 flex justify-center items-center blur-lg bg-white "></div>
-        <img className="w-[80%] h-[80%] relative z-[99999] shadow-lg rounded object-cover" src={img} alt="img" />
-        <AiOutlineClose onClick={() => setImageScaled('')} className="absolute cursor-pointer hover:scale-110 right-2 top-2 text-xl font-old text-red-500"/>
+        <div
+          onClick={() => setImageScaled("")}
+          className="w-full h-full absolute top-0 left-0 flex justify-center items-center blur-lg bg-white "
+        ></div>
+        <img
+          className="w-[80%] h-[80%] relative z-[99999] shadow-lg rounded object-cover"
+          src={img}
+          alt="img"
+        />
+        <AiOutlineClose
+          onClick={() => setImageScaled("")}
+          className="absolute cursor-pointer hover:scale-110 right-2 top-2 text-xl font-old text-red-500"
+        />
       </div>
     );
   };
@@ -85,7 +94,10 @@ const Property = () => {
               </div>
 
               {bwidth.index === 1 ? (
-                <p className="py-3 text-base md:text-xl text-secondary capitalize" ame>
+                <p
+                  className="py-3 text-base md:text-xl text-secondary capitalize"
+                  ame
+                >
                   {" "}
                   Type of rent range not available for this property
                 </p>
@@ -103,16 +115,17 @@ const Property = () => {
             </div>
           </div>
           <div>
-            <p className="text-xl text-primary mb-1">Location: <span>Ajegunle, Lagos Nigeria</span></p>
-
+            <p className="text-xl text-primary mb-1">
+              Location: <span>Ajegunle, Lagos Nigeria</span>
+            </p>
           </div>
           <div className="flex md:flex-row flex-col w-full  gap-2 ">
             {" "}
-            <button className="bg-secondary w-full md:w-1/3 py-2 font-semibold gap-2 transition duration-200 ease-in-out justify-center   focus-within:outline focus-within:text-secondary hover:scale-95 focus-within:outline-secondary focus-within:bg-transparent flex items-center text-white rounded-md outline-none">
+            <button className="bg-secondary h-[50px] md:h-auto w-full md:w-1/3 py-2 font-semibold gap-2 transition duration-200 ease-in-out justify-center   focus-within:outline focus-within:text-secondary hover:scale-95 focus-within:outline-secondary focus-within:bg-transparent flex items-center text-white rounded-md outline-none">
               {" "}
               <AiOutlineBook /> Book Apartment
             </button>{" "}
-            <button className="bg-secondary w-full md:w-1/3 py-3 font-semibold gap-2 transition duration-200 ease-in-out justify-center  focus-within:outline focus-within:text-secondary hover:scale-95 focus-within:outline-secondary focus-within:bg-transparent flex items-center text-white rounded-md outline-none">
+            <button className="bg-secondary h-[50px] md:h-auto w-full md:w-1/3 py-3 font-semibold gap-2 transition duration-200 ease-in-out justify-center  focus-within:outline focus-within:text-secondary hover:scale-95 focus-within:outline-secondary focus-within:bg-transparent flex items-center text-white rounded-md outline-none">
               {" "}
               <AiOutlineMessage />
               Message Lister
@@ -169,7 +182,9 @@ const Property = () => {
       ) : descwidth.index === 2 ? (
         <div className=" overflow-y-auto p-1 py-3 w-[99%] md:w-[90%] flex flex-col  px-[1rem] md:pl-[5rem] scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-blue-200 h-auto  max-h-[60vh] ">
           <div className="flex mb-[3rem] justify-between items-center">
-            <span className="w-fit text-xl sm:text-2xl  md:text-5xl font-extrabold p-2">Reviews</span>{" "}
+            <span className="w-fit text-xl sm:text-2xl  md:text-5xl font-extrabold p-2">
+              Reviews
+            </span>{" "}
             <span className="w-full md:w-[60%] h-fit rounded-full bg-gray-200 items-end justify-end">
               <hr
                 className="h-[7px] rounded-full bg-secondary"
@@ -224,9 +239,13 @@ const Property = () => {
       {/* additionalinfo   */}
       {/* relatedproperties */}
       <section>
-        <h1 className="text-5xl text-secondary pl-[3rem] my-[5rem]">Related Propeerties</h1>
+        <h1 className="md:text-5xl text-2xl text-center md:text-auto text-secondary md:pl-[3rem] my-[1rem] md:my-[5rem]">
+          Related Propeerties
+        </h1>
         <div className="flex flex-wrap justify-center gap-6">
-            {[1,2,3,4,5,6,7,8].map(item => <Card key={item}/>) }
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+            <Card key={item} />
+          ))}
         </div>
       </section>
     </div>

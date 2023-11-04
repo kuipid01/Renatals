@@ -7,7 +7,7 @@ const Featured = () => {
     <div className='flex py-6 w-11/12 mx-auto min-h-screen flex-col items-center '>
         <small className='text-gray w-full tracking-wider uppercase'>Newly Added</small>
         <div className="flex w-full items-center mt-3 justify-between">
-        <h1 className='text-3xl md:text-5xl text-secondary'>Featured Properties</h1>
+        <h1 className='text-xl md:text-5xl text-secondary'>Featured Properties</h1>
         <div className="flex">
           <ul className='flex gap-10 text-xs'>
             <li onClick={() => setIndex(0)} className={`font-light text-xs ${index===0 && 'border-b-2 border-secondary'} text-primary pb-1 cursor-pointer`}>All Properties</li>

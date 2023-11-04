@@ -3,11 +3,11 @@ import { AiOutlineMoneyCollect } from "react-icons/ai";
 const Choose = () => {
   return (
     <div className="w-full min-h-screen h-fit flex flex-col items-center">
-      <div className="w-4/5 items-center mx-auto flex md:flex-row flex-col justify-between">
+      <div className="md:w-4/5 w-full items-center mx-auto flex md:flex-row flex-col justify-between">
         <div className="flex flex-col gap-5">
-          <small className=" tracking-wide uppercase">Why choose us</small>
-          <p className="md:text-2xl text-base font-bold  text-primary">
-            We Provide the best and trusted rent <br /> apartments for our
+          <small className=" tracking-wide font-bold uppercase">Why choose us</small>
+          <p className="md:text-2xl text-xl font-bold  text-primary">
+            We Provide the best and trusted rent <span className="hidden md:flex"> <br /> </span>  apartments for our
             clients
           </p>
         </div>
@@ -21,6 +21,7 @@ const Choose = () => {
         </div>
       </div>
       <div className="w-[95%] h-fit mt-[3rem] lg:mt-[0] lg:h-screen  items-center mx-auto flex md:flex-row flex-col justify-between ">
+       {/* hidden on smalll screen images collages  */}
         <div className="w-1/2 hidden   h-full relative lg:flex justify-center items-center">
           <div className="w-[500px] p-2  relative rounded-tl-[150px] rounded-bl-md border-[3px] border-solid rounded-br-md rounded-tr-md h-[300px] bg-white">
             <div className="absolute -left-3 rounded-lg w-1 h-1/4 bg-gray-400/50 bottom-2"></div>
@@ -50,6 +51,8 @@ const Choose = () => {
             />
           </div>
         </div>
+
+        {/* end of images */}
         <div className="w-full lg:w-1/2 h-full justify-center flex-col items-center flex ">
           <div className="flex gap-2">
             <AiOutlineMoneyCollect className="text-5xl"/>{" "}

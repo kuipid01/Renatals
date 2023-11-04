@@ -17,7 +17,7 @@ const Home = () => {
           you can find here co-living property. So you have lots of opportunity
         </p>
         <Link to='/login'>
-          <button className="bg-secondary  hover:border-2 transition-all hover:border-secondary hover:bg-transparent w-[95%]   px-5 md:w-full py-2 h-[50px] md:h-[70px] font-bold rounded-lg text-white">
+          <button className="bg-secondary  hover:border-2 transition-all hover:border-secondary hover:bg-transparent  px-5 w-full py-2 h-[50px] md:h-[70px] font-bold rounded-lg text-white">
             {" "}
             Get Started{" "}
           </button>

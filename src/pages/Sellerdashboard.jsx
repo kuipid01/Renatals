@@ -69,7 +69,7 @@ const Sellerdashboard = () => {
         <div className="flex w-full flex-wrap gap-5 md:gap-3 justify-start">
           {[1, 2, 3].map((item) => (
             <Link className="w-full md:w-[250px]" key={item} to="/property/3">
-              <div className="w-full  border cursor-pointer shadow h-[300px] flex flex-col ">
+              <div className="w-full p-2  border cursor-pointer shadow h-[300px] flex flex-col ">
                 <img
                   src="/assets/house2.jpg"
                   className="w-full h-3/4 object-cover"
