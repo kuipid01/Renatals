@@ -39,7 +39,7 @@ const NewGig = () => {
   console.log(active);
   return (
     <div className="pt-[7rem]">
-      <ul className="w-full flex justify-evenly border-y border-gray-300 px-[10%] py-3 mx-auto ">
+      <ul className="w-full flex justify-evenly border-y border-gray-300 px-1 md:px-[10%] py-3 mx-auto ">
         <li className="flex gap-3 items-center font-semibold ">
           <div
             className={`w-[30px] h-[30px] grid place-content-center text-white ${

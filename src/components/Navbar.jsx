@@ -9,7 +9,7 @@ import {
 } from "react-icons/ai";
 const Navbar = () => {
   const [navTrans, setnavTrans] = useState(true);
-  const [userOnline, setuserOnline] = useState(true);
+  const [userOnline, setuserOnline] = useState(false);
   const [dropDown, setdropDown] = useState(false);
   const [mobile, setMobile] = useState(false);
   useEffect(() => {
