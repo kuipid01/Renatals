@@ -55,13 +55,13 @@ const Login = () => {
         >
           <div className="flex flex-col items-center gap-2">
             <div className="w-full relative">
-              <AiOutlineMail className="absolute left-2 md:left-auto text-white md:text-primary top-1/2 transform -translate-y-1/2" />
+              <AiOutlineMail className="absolute left-2  text-white md:text-primary top-1/2 transform -translate-y-1/2" />
               <input
                 type="text"
                 id="email"
                 name="email"
                 placeholder="Enter Email"
-                className="p-2 pl-[30px] text-white md:pl-5 bg-gray-300/20 border-2 border-white rounded-md md:rounded-[0] py-2 px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
+                className="p-2 pl-[30px]  text-white md:text-gray-500  bg-gray-300/20 border-2 border-white rounded-md md:rounded-[0] py-2 px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
                 {...register("email")}
               />
             </div>
@@ -74,14 +74,14 @@ const Login = () => {
           </div>
           <div className="flex flex-col items-center gap-2">
             <div className="w-full relative">
-              <AiOutlineLock className="absolute left-2 md:left-auto text-white md:text-primary top-1/2 transform -translate-y-1/2" />
+              <AiOutlineLock className="absolute left-2  text-white md:text-primary top-1/2 transform -translate-y-1/2" />
               <input
                 type={!passwordVisible ? "password" : "text"}
                 id="password"
                 name="password"
                 {...register("password")}
                 placeholder="Enter Password"
-                className="p-2 pl-[30px] text-white md:pl-5 bg-gray-300/20 border-2 py-2 border-white rounded-md md:rounded-[0] px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
+                className="p-2 pl-[30px] text-white md:text-gray-500  bg-gray-300/20 border-2 py-2 border-white rounded-md md:rounded-[0] px-2 md:border-b-2 w-full md:border-gray-400 outline-none"
               />
               {passwordVisible ? (
                 <AiOutlineEye
