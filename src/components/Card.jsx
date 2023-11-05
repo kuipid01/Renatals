@@ -1,8 +1,9 @@
 import React from "react";
 import { AiFillHome, AiOutlineCamera, AiOutlineCar, AiOutlineExpand, AiOutlineHome, AiOutlineSearch } from "react-icons/ai";
+import { Link } from "react-router-dom";
 const Card = () => {
   return (
-    <div className="shadow-lg p-2 w-full md:w-[var(--card-width)] h-[500px]  overflow-hidden ">
+    <Link to='/property/3' className="shadow-lg p-2 w-full md:w-[var(--card-width)] h-[500px]  overflow-hidden ">
       <div className="w-full relative h-1/2">
         <div className="px-3 bg-white text-gray-500 rounded-md absolute bottom-4 left-4 text-sm font-medium py-2">
           FOR RENT
@@ -35,7 +36,7 @@ const Card = () => {
       <p className="text-2xl text-primary py-4 overflow-hidden"> Price: #250000/Year</p>
       </div>
    
-    </div>
+    </Link>
   );
 };
 
