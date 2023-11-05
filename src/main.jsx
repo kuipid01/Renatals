@@ -17,6 +17,7 @@ import AddPropertyForm from './components/AddPropertyForm.jsx';
 import Sellerdashboard from './pages/Sellerdashboard.jsx';
 import NewGig from './pages/NewGig.jsx';
 import Conversations from './pages/Conversations.jsx';
+import Footer from './components/Footer.jsx';
 
 
 const Layout = () => {
@@ -25,7 +26,7 @@ const Layout = () => {
 
       <Navbar/>
       <Outlet/> 
-      {/* <Footer/> */}
+    <Footer/> 
    
     </div>
   
