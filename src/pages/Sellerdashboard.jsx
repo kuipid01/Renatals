@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   AiFillCompass,
@@ -6,6 +7,12 @@ import {
   AiOutlinePlus,
 } from "react-icons/ai";
 const Sellerdashboard = () => {
+  useEffect(() => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}, [])
   return (
     <div className="w-full py-[12vh] bg-gray-100/50 min-h-screen  flex flex-col md:flex-row  justify-between px-[2rem] h-fit">
       <div className="w-full md:w-2/6 flex flex-col">
