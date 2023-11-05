@@ -4,36 +4,27 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 const Popular = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const headerTextVariant = {
-    initial: {
-      y: "10%",
-      opacity:0,
-      clipPath: "polygon( 0 100%, 100% 100%, 100% 100%, 0% 100% )",
-    },
-    animate: {
-      y: 0,
-      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-opacity:1,
-      transition: {
-        duration: .5,
-      },
-    },
-  };
-  console.log(isInView);
+  const isInView = useInView(ref,{ once: true });
+ 
   return (
     <motion.div
-      ref={ref}
+    
       className="flex py-6 min-h-screen flex-col items-center "
     >
-      <small className="text-gray tracking-wider uppercase">Best Choice</small>
-      <h1 className="text-3xl md:text-5xl text-secondary">
+      <small   ref={ref} className="text-gray tracking-wider uppercase">Best Choice</small>
+      <motion.h1 style={{
+          transform: isInView ? "none" : "translateY(-10px)",
+          opacity: isInView ? 1 : 0,
+          transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.1s"
+        }} className="text-3xl md:text-5xl text-secondary">
         Popular Properties
-      </h1>
+      </motion.h1>
       <motion.div
-        variants={headerTextVariant}
-        initial="initial"
-        animate={isInView ? "animate" : "initial"}
+       style={{
+        transform: isInView ? "none" : "translateY(20px)",
+        opacity: isInView ? 1 : 0,
+        transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.3s"
+      }} 
         className="flex my-6 p-3 md:p-8 flex-wrap justify-center gap-6"
       >
         {[1, 2, 3, 4, 5, 6].map((item) => (

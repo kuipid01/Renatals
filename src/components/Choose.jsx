@@ -2,17 +2,17 @@ import React from "react";
 import { AiOutlineMoneyCollect } from "react-icons/ai";
 const Choose = () => {
   return (
-    <div className="w-full min-h-screen h-fit flex flex-col items-center">
+    <div className="w-full my-[2rem] md:min-h-screen h-fit flex flex-col items-center">
       <div className="md:w-4/5 w-full items-center mx-auto flex md:flex-row flex-col justify-between">
-        <div className="flex flex-col gap-5">
+        <div className="flex w-[95%] md:w-auto mx-auto flex-col gap-5">
           <small className=" tracking-wide font-bold uppercase">Why choose us</small>
-          <p className="md:text-2xl text-xl font-bold  text-primary">
+          <p className="md:text-2xl text-lg font-bold  text-primary">
             We Provide the best and trusted rent <span className="hidden md:flex"> <br /> </span>  apartments for our
             clients
           </p>
         </div>
         <div>
-          <p className="w-full md:max-w-md font-medium leading-8 text-gray-600">
+          <p className=" w-[95%] md:w-auto mx-auto  md:max-w-md font-light md:font-medium leading-8 text-gray-600">
             {" "}
             Explore an extensive selection of rental properties at your
             fingertips. We offer a wide range of rental options, ensuring you'll
