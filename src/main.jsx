@@ -6,6 +6,7 @@ import {
   createBrowserRouter,
   Outlet,
   RouterProvider,
+  ScrollRestoration,
 }  from "react-router-dom";
 import LandingPage from './pages/LandingPage.jsx';
 import Navbar from './components/Navbar.jsx';
@@ -23,7 +24,7 @@ import Footer from './components/Footer.jsx';
 const Layout = () => {
   return(
     <div>
-
+    <ScrollRestoration />
       <Navbar/>
       <Outlet/> 
     <Footer/> 

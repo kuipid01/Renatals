@@ -13,12 +13,7 @@ import Card from "../components/Card";
 const Property = () => {
   const [bwidth, setBwidth] = useState({ value: "33.33333%", index: 1 });
   const [descwidth, setDescWidth] = useState({ value: "33.33333%", index: 1 });
-useEffect(() => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-}, [])
+
   const handleWidth = (num) => {
     const val = (num / 3) * 100;
     setBwidth({ ...bwidth, value: val + "%", index: num });
