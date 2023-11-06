@@ -11,18 +11,22 @@ import Rating from "../components/Rating";
 import Amenities from "../components/Amenities";
 import Card from "../components/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import {motion} from 'framer-motion'
+import ImagePlaceHolder from "../components/ImagePlaceHolder";
 const Property = () => {
   const [bwidth, setBwidth] = useState({ value: "33.33333%", index: 1 });
   const [descwidth, setDescWidth] = useState({ value: "33.33333%", index: 1 });
   const [isMobile, setIsMobile] = useState(false);
   const [isMedium, setIsMedium] = useState(false);
+  const [dataLoaded, setDataLoaded] = useState(false);
+  
 
+ 
   useEffect(() => {
     const checkScreenSize = () => {
       const windowWidth = window.innerWidth;
@@ -31,7 +35,9 @@ const Property = () => {
       const mediumThreshold = 1024; // For example, consider screens between 768px and 1024px as medium
 
       setIsMobile(windowWidth < mobileThreshold);
-      setIsMedium(windowWidth >= mobileThreshold && windowWidth < mediumThreshold);
+      setIsMedium(
+        windowWidth >= mobileThreshold && windowWidth < mediumThreshold
+      );
     };
 
     // Initial check
@@ -81,18 +87,29 @@ const Property = () => {
     );
   };
   //   console.log(imageScaled)
+  setTimeout(() => {
+    setDataLoaded(true)
+  }, 3000);
   return (
     <div className="mt-[7rem]">
       {imageScaled === "" ? "" : <ScaledImage img={imageScaled} />}
       <section className=" w-5/6 mx-auto gap-[2rem] h-fit min:h-[80vh] flex md:flex-row flex-col ">
-        <img
-          className="md:w-2/5 w-full object-cover rounded-lg"
-          src="/assets/house2.jpg"
-          alt=""
-        />
+        {dataLoaded ? (
+          <img
+            className="md:w-2/5 w-full object-cover rounded-lg"
+            src="/assets/house2.jpg"
+            alt=""
+          />
+        ) : (
+          <div  className="md:w-2/5 w-full object-cover rounded-lg">
+              <ImagePlaceHolder />
+          </div>
+        
+        )}
+
         <div className="md:flex-1 w-full gap-4 flex flex-col">
           <div className="flex justify-between items-center">
-            <span className="flex-1 text-xl md:text-4xl text-primary font-light">
+            <span className="flex-1 text-xl  md:text-4xl text-primary font-light">
               Two Bedroom flat detached apartment
             </span>
             <div className="w-1/4 flex">
@@ -242,32 +259,44 @@ const Property = () => {
       <p className="text-left pl-3 text-2xl text-primary font-light mb-4">
         Image Gallery
       </p>
-      <div className="p-5" >
+      <div className="p-5">
         <Swiper
-        className={`imageGallery  w-full p-5 ${isMobile ? ' h-[150px]' :  'h-[300px]'} gap-[24px] flex items-center justify-center flex-wrap `}
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
-            spaceBetween={isMobile ? 20 : 50}
-            slidesPerView={isMobile ? 2 : 4}
-            navigation
-            // pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log('slide change')}
+          className={`imageGallery  w-full p-5 ${
+            isMobile ? " h-[150px]" : "h-[300px]"
+          } gap-[24px] flex items-center justify-center flex-wrap `}
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          spaceBetween={isMobile ? 20 : 50}
+          slidesPerView={isMobile ? 2 : 4}
+          navigation
+          // pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log("slide change")}
         >
           {[1, 2, 3, 4, 5, 6].map((item) => (
-            <SwiperSlide   className="w-full md:w-[var(--card-width)] h-fit rounded overflow-hidden relative" key={item}>
-             <div className="w-[30px] absolute bottom-3 right-3 text-2xl  z-[88888] text-white cursor-pointer hover:text-3xl transition-all flex items-center justify-center h-[30px]">
-             <AiOutlineExpand
-                 onClick={() => setImageScaled("/assets/house2.jpg")} 
+            <SwiperSlide
+              className="w-full md:w-[var(--card-width)] h-fit rounded overflow-hidden relative"
+              key={item}
+            >
+              <div className="w-[30px] absolute bottom-3 right-3 text-2xl  z-[88888] text-white cursor-pointer hover:text-3xl transition-all flex items-center justify-center h-[30px]">
+                <AiOutlineExpand
+                  onClick={() => setImageScaled("/assets/house2.jpg")}
                   className=""
                 />
-             </div>
-                
-                <img
-                  className="w-full h-full object-cover"
-                  src="/assets/house1.jpg"
-                  alt=""
-                />
+              </div>
+
+              {dataLoaded ? (
+           <img
+           className="w-full h-full object-cover"
+           src="/assets/house1.jpg"
+           alt=""
+         />
+        ) : (
+          <div  className="w-[300px] h-[300px] object-cover rounded-lg">
+              <ImagePlaceHolder />
+          </div>
+        
+        )}
              
             </SwiperSlide>
           ))}
