@@ -10,10 +10,41 @@ import "./property.css";
 import Rating from "../components/Rating";
 import Amenities from "../components/Amenities";
 import Card from "../components/Card";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
 const Property = () => {
   const [bwidth, setBwidth] = useState({ value: "33.33333%", index: 1 });
   const [descwidth, setDescWidth] = useState({ value: "33.33333%", index: 1 });
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMedium, setIsMedium] = useState(false);
 
+  useEffect(() => {
+    const checkScreenSize = () => {
+      const windowWidth = window.innerWidth;
+      // Define your threshold values for mobile and medium screens
+      const mobileThreshold = 768; // For example, consider screens below 768px as mobile
+      const mediumThreshold = 1024; // For example, consider screens between 768px and 1024px as medium
+
+      setIsMobile(windowWidth < mobileThreshold);
+      setIsMedium(windowWidth >= mobileThreshold && windowWidth < mediumThreshold);
+    };
+
+    // Initial check
+    checkScreenSize();
+
+    // Add a listener to check and update screen size on resize
+    window.addEventListener("resize", checkScreenSize);
+
+    // Clean up the event listener
+    return () => {
+      window.removeEventListener("resize", checkScreenSize);
+    };
+  }, []);
   const handleWidth = (num) => {
     const val = (num / 3) * 100;
     setBwidth({ ...bwidth, value: val + "%", index: num });
@@ -211,23 +242,36 @@ const Property = () => {
       <p className="text-left pl-3 text-2xl text-primary font-light mb-4">
         Image Gallery
       </p>
-      <div className="imageGallery w-full p-5 h-fit md:h-screen gap-[24px] flex items-center justify-center flex-wrap ">
-        {[1, 2, 3, 4, 5, 6].map((item) => (
-          <div
-            className="w-full md:w-[var(--card-width)] h-1/2 rounded overflow-hidden relative"
-            key={item}
-          >
-            <AiOutlineExpand
-              onClick={() => setImageScaled("/assets/house2.jpg")}
-              className="absolute bottom-3 right-3 text-2xl text-white cursor-pointer hover:text-3xl transition-all"
-            />
-            <img
-              className="w-full h-full object-cover"
-              src="/assets/house1.jpg"
-              alt=""
-            />
-          </div>
-        ))}
+      <div className="p-5" >
+        <Swiper
+        className={`imageGallery  w-full p-5 ${isMobile ? ' h-[150px]' :  'h-[300px]'} gap-[24px] flex items-center justify-center flex-wrap `}
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            spaceBetween={isMobile ? 20 : 50}
+            slidesPerView={isMobile ? 2 : 4}
+            navigation
+            // pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={() => console.log('slide change')}
+        >
+          {[1, 2, 3, 4, 5, 6].map((item) => (
+            <SwiperSlide   className="w-full md:w-[var(--card-width)] h-fit rounded overflow-hidden relative" key={item}>
+             <div className="w-[30px] absolute bottom-3 right-3 text-2xl  z-[88888] text-white cursor-pointer hover:text-3xl transition-all flex items-center justify-center h-[30px]">
+             <AiOutlineExpand
+                 onClick={() => setImageScaled("/assets/house2.jpg")} 
+                  className=""
+                />
+             </div>
+                
+                <img
+                  className="w-full h-full object-cover"
+                  src="/assets/house1.jpg"
+                  alt=""
+                />
+             
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
 
       {/* propertydetails  */}
