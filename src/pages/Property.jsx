@@ -16,7 +16,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import {motion} from 'framer-motion'
+import { AnimatePresence, motion } from "framer-motion";
 import ImagePlaceHolder from "../components/ImagePlaceHolder";
 const Property = () => {
   const [bwidth, setBwidth] = useState({ value: "33.33333%", index: 1 });
@@ -24,9 +24,7 @@ const Property = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isMedium, setIsMedium] = useState(false);
   const [dataLoaded, setDataLoaded] = useState(false);
-  
 
- 
   useEffect(() => {
     const checkScreenSize = () => {
       const windowWidth = window.innerWidth;
@@ -88,23 +86,29 @@ const Property = () => {
   };
   //   console.log(imageScaled)
   setTimeout(() => {
-    setDataLoaded(true)
+    setDataLoaded(true);
   }, 3000);
   return (
     <div className="mt-[7rem]">
       {imageScaled === "" ? "" : <ScaledImage img={imageScaled} />}
-      <section className=" w-5/6 mx-auto gap-[2rem] h-fit min:h-[80vh] flex md:flex-row flex-col ">
+      <section className=" w-5/6  mx-auto gap-[2rem] h-fit min:h-[80vh] flex md:flex-row flex-col ">
         {dataLoaded ? (
           <img
-            className="md:w-2/5 w-full object-cover rounded-lg"
+            className="md:w-2/5 h-[500px] w-full object-cover rounded-lg"
             src="/assets/house2.jpg"
             alt=""
           />
         ) : (
-          <div  className="md:w-2/5 w-full object-cover rounded-lg">
+          <AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              exit={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="md:w-2/5 w-full h-[500px] md:h-auto object-cover rounded-lg"
+            >
               <ImagePlaceHolder />
-          </div>
-        
+            </motion.div>
+          </AnimatePresence>
         )}
 
         <div className="md:flex-1 w-full gap-4 flex flex-col">
@@ -286,18 +290,16 @@ const Property = () => {
               </div>
 
               {dataLoaded ? (
-           <img
-           className="w-full h-full object-cover"
-           src="/assets/house1.jpg"
-           alt=""
-         />
-        ) : (
-          <div  className="w-[300px] h-[300px] object-cover rounded-lg">
-              <ImagePlaceHolder />
-          </div>
-        
-        )}
-             
+                <img
+                  className="w-full h-full object-cover"
+                  src="/assets/house1.jpg"
+                  alt=""
+                />
+              ) : (
+                <div className="w-[300px] h-[300px] object-cover rounded-lg">
+                  <ImagePlaceHolder />
+                </div>
+              )}
             </SwiperSlide>
           ))}
         </Swiper>
@@ -317,7 +319,7 @@ const Property = () => {
         </h1>
         <div className="flex flex-wrap justify-center gap-6">
           {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-            <Card key={item} />
+            <Card propertyPage={true} dataLoaded={dataLoaded} key={item} />
           ))}
         </div>
       </section>

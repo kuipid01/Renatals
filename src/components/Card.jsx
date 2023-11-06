@@ -10,7 +10,7 @@ const Card = () => {
         </div>
         <div className="absolute top-4 right-4 flex flex-col gap-3">
           <div className="bg-black/75 p-1 font-light gap-1 items-center text-white flex ">
-            <AiOutlineCamera /> <span>08</span>
+            <AiOutlineCamera /> <span>08</span>pu
           </div>
           <div className="bg-black/75 p-1 font-light gap-1 items-center text-white flex ">
             <AiOutlineSearch /> <span>07</span>

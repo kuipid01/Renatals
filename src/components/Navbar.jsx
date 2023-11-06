@@ -8,6 +8,8 @@ import {
   AiOutlineSearch,
 } from "react-icons/ai";
 import { motion, AnimatePresence } from "framer-motion";
+import { navLinksData } from "./navLinksData";
+import { NavMobile } from "./NavMobile";
 const Navbar = () => {
   const [navTrans, setnavTrans] = useState(true);
   const [userOnline, setuserOnline] = useState(true);
@@ -39,58 +41,7 @@ const Navbar = () => {
     };
   }, [window.scrollY]);
 
-  const NavMobile = () => {
-    return (
-      <motion.ul
-        initial={{ opacity: 0, y: "-100%" }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: "-100%" }}
-        className={`flex z-[99999] px-[20px] flex-col lg:hidden left-0 absolute bottom top-full w-full h-fit py-10 gap-5 text-gray-800 bg-white shadow-md items-center font-medium uppercase`}
-      >
-        <Link className="w-full" to="/">
-          <li
-            onClick={() => setMobile(!mobile)}
-            className="cursor-pointer  py-2 w-full hover:bg-gray-300 transition-all"
-          >
-            Home
-          </li>
-        </Link>
-        <li
-          onClick={() => setMobile(!mobile)}
-          className="cursor-pointer py-2 w-full hover:bg-gray-300 transition-all"
-        >
-          About
-        </li>
-        <li
-          onClick={() => setMobile(!mobile)}
-          className="cursor-pointer py-2 w-full hover:bg-gray-300 transition-all"
-        >
-          Properties
-        </li>
-        <li
-          onClick={() => setMobile(!mobile)}
-          className="cursor-pointer py-2 w-full hover:bg-gray-300 transition-all"
-        >
-          Agency
-        </li>
-        <li
-          onClick={() => setMobile(!mobile)}
-          className="cursor-pointer py-2 w-full hover:bg-gray-300 transition-all"
-        >
-          Blog
-        </li>
-        <li
-          onClick={() => setMobile(!mobile)}
-          className="cursor-pointer py-2 w-full hover:bg-gray-300 transition-all"
-        >
-          Contact
-        </li>
-        <Link onClick={() => setMobile(!mobile)} to="/search">
-          <AiOutlineSearch className="text-2xl  cursor-pointer hover:text-secondary transition-all" />
-        </Link>
-      </motion.ul>
-    );
-  };
+ 
 
   return (
     <div
@@ -257,7 +208,7 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
-      <AnimatePresence>{mobile && <NavMobile />}</AnimatePresence>
+      <AnimatePresence>{mobile && <NavMobile setMobile={setMobile} />}</AnimatePresence>
     </div>
   );
 };
