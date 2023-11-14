@@ -1,26 +1,31 @@
 import React from "react";
 import {  AiOutlineClose } from "react-icons/ai";
-const Tab1 = ({values,tags,setTags,deleteFromArray,setValues,addToarray}) => {
+const Tab1 = ({values,tags,handleChange,setTags,state,deleteFromArray,setValues,addToarray}) => {
   return (
     <div className="shadow-md  w-[98%] md:w-[80%] p-2 py-5 mx-auto border mt-[4rem] min-h-screen bg-white">
       <form className="w-[90%] mx-auto flex flex-col gap-10" action="">
         <div className="w-full flex  items-center text-gray-500">
           {/* <label className="flex-4 text-lg text-black font-bold" htmlFor="title"> Rental Title</label> */}
           <input
+          value={state?.title}
             type="text"
+            name='title'
             className="w-full px-2 py-5 border outline-none rounded-md shadow-md shadow-gray-400 text-2xl text-gray-500"
             placeholder="Enter Rental Title"
+            onChange={ handleChange}
           />
         </div>
         <div className="w-full flexgap-2 items-center text-gray-500">
           <select
             className="w-full   px-2 py-5 border outline-none rounded-md shadow-md shadow-gray-400 text-2xl bg-white  flex  gap-2 items-center text-gray-500"
-            name=""
+            name="rentCategory"
             id=""
+              value={state?.rentCategory}
+            onChange={handleChange}
           >
             <option value="null">Select Category</option>
-            <option value="null">Rental</option>
-            <option value="null"> For Sale</option>
+            <option value="rental">Rental</option>
+            <option value="sale"> For Sale</option>
           </select>
         </div>
         <div className="flex w-full flex-col gap-3 mt-10">
@@ -37,7 +42,7 @@ const Tab1 = ({values,tags,setTags,deleteFromArray,setValues,addToarray}) => {
             type="text"
           />
           <div className="w-full flex flex-wrap justify-center gap-3">
-            {tags?.map((item, index) => (
+            {state?.tags?.map((item, index) => (
               <div
                 key={index}
                 className="px-4 flex items-center h-[40px]  gap-2 justify-center rounded-full bg-gray-600 text-gray-200"

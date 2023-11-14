@@ -11,7 +11,7 @@ const LandingPage = () => {
       <Popular />
 
       <Choose />
-      <Featured />
+      {/* <Featured /> */}
     </div>
   );
 };

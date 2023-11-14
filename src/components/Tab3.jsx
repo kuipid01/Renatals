@@ -3,7 +3,8 @@ import { TbToolsKitchen } from "react-icons/tb";
 import { PiToiletLight } from "react-icons/pi";
 import { AiOutlineCar } from "react-icons/ai";
 import { BsHouseDoor } from "react-icons/bs";
-const Tab3 = () => {
+const Tab3 = ({ state, handleAmenities }) => {
+  
   return (
     <div className="shadow-md w-[98%] md:w-[80%]  flex  flex-col p-2 py-5 mx-auto border mt-[4rem] h-fit bg-white">
       <p className="text-xl font-medium mb-[3rem] text-gray-900">
@@ -16,7 +17,10 @@ const Tab3 = () => {
           <input
             className="w-[40px] rounded-md border-gray-500 outline-none p-2 h-[40px] border-2"
             type="text"
-            inputmode="numeric"
+            name="kitchen"
+            value={state.amenities.kitchen}
+            inputMode="numeric"
+            onChange={handleAmenities}
             pattern="[0-9]*"
           />
         </li>
@@ -27,7 +31,10 @@ const Tab3 = () => {
           <input
             className="w-[40px] rounded-md border-gray-500 outline-none p-2 h-[40px] border-2"
             type="text"
-            inputmode="numeric"
+            value={state.amenities.toilets}
+            name="toilets"
+            inputMode="numeric"
+            onChange={handleAmenities}
             pattern="[0-9]*"
           />
         </li>
@@ -37,7 +44,10 @@ const Tab3 = () => {
           <input
             className="w-[40px] rounded-md border-gray-500 outline-none p-2 h-[40px] border-2"
             type="text"
-            inputmode="numeric"
+            value={state.amenities.carParks}
+            name="carParks"
+            inputMode="numeric"
+            onChange={handleAmenities}
             pattern="[0-9]*"
           />
         </li>
@@ -47,7 +57,10 @@ const Tab3 = () => {
           <input
             className="w-[40px] rounded-md border-gray-500 outline-none p-2 h-[40px] border-2"
             type="text"
-            inputmode="numeric"
+            value={state.amenities.rooms}
+            name="rooms"
+            inputMode="numeric"
+            onChange={handleAmenities}
             pattern="[0-9]*"
           />
         </li>
@@ -55,6 +68,8 @@ const Tab3 = () => {
       <textarea
         name="desc"
         id="dessc"
+        value={state.amenities.desc}
+        onChange={handleAmenities}
         className="w-full mt-[2rem] p-3 resize-none min-h-[200px] md:min-h-[300px] rounded-md shadow-md border-2 text-3xl text-gray-600 border-black/40 outline-none placeholder:text-xl  md:placeholder:text-3xl"
         placeholder="Enter other Amenities "
       />

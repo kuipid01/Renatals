@@ -18,12 +18,41 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { AnimatePresence, motion } from "framer-motion";
 import ImagePlaceHolder from "../components/ImagePlaceHolder";
+import { useParams } from "react-router-dom";
+import newRequest from "../utils/newRequest";
+import { useQuery } from "@tanstack/react-query";
 const Property = () => {
   const [bwidth, setBwidth] = useState({ value: "33.33333%", index: 1 });
   const [descwidth, setDescWidth] = useState({ value: "33.33333%", index: 1 });
   const [isMobile, setIsMobile] = useState(false);
   const [isMedium, setIsMedium] = useState(false);
   const [dataLoaded, setDataLoaded] = useState(false);
+  const { id } = useParams();
+
+  const { isLoading, error, data, refetch } = useQuery({
+    queryKey: ["properties", id], // Update the queryKey to include the property id
+    queryFn: () =>
+      newRequest.get(`/property/single/${id}`).then((res) => {
+        return res.data;
+      }),
+  });
+  
+// Destructure property and similarProperties from the data object
+const { property, similarProperties } = data || {};
+  const userId = data?.userId;
+  // console.log(property,similarProperties);
+  const {
+    isLoading: isLoadingUser,
+    error: errorUser,
+    data: dataUser,
+  } = useQuery({
+    queryKey: ["user"],
+    queryFn: () =>
+      newRequest.get(`/users/${userId}`).then((res) => {
+        return res.data;
+      }),
+    enabled: !!userId,
+  });
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -64,14 +93,21 @@ const Property = () => {
   const decimalStar = (totalStarsGotten / totalStarsAvailable) * 5;
   const widthReview = (totalStarsGotten / totalStarsAvailable) * 100 + "%";
   const [imageScaled, setImageScaled] = useState("");
+  const handleRelatedPropertyClick = async (relatedPropertyId) => {
+ 
+    // Manually refetch the property data for the clicked related property
+    await refetch(["properties", relatedPropertyId]);
+  
+    
+  };
+  
   const ScaledImage = ({ img }) => {
     // console.log(img);
     return (
       <div className=" fixed left-0 flex justify-center items-center top-0 w-full h-full  z-[99999] ">
         <div
           onClick={() => setImageScaled("")}
-          className="w-full h-full absolute top-0 left-0 flex justify-center items-center blur-lg bg-white "
-        ></div>
+          className="w-full h-full absolute top-0 left-0 flex justify-center items-center blur-lg bg-white "></div>
         <img
           className="w-[80%] h-[80%] relative z-[99999] shadow-lg rounded object-cover"
           src={img}
@@ -92,10 +128,10 @@ const Property = () => {
     <div className="mt-[7rem]">
       {imageScaled === "" ? "" : <ScaledImage img={imageScaled} />}
       <section className=" w-5/6  mx-auto gap-[2rem] h-fit min:h-[80vh] flex md:flex-row flex-col ">
-        {dataLoaded ? (
+        {property ? (
           <img
             className="md:w-2/5 h-[500px] w-full object-cover rounded-lg"
-            src="/assets/house2.jpg"
+            src={property?.coverImage}
             alt=""
           />
         ) : (
@@ -104,8 +140,7 @@ const Property = () => {
               initial={{ opacity: 0, scale: 0 }}
               exit={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="md:w-2/5 w-full h-[500px] md:h-auto object-cover rounded-lg"
-            >
+              className="md:w-2/5 w-full h-[500px] md:h-auto object-cover rounded-lg">
               <ImagePlaceHolder />
             </motion.div>
           </AnimatePresence>
@@ -114,7 +149,7 @@ const Property = () => {
         <div className="md:flex-1 w-full gap-4 flex flex-col">
           <div className="flex justify-between items-center">
             <span className="flex-1 text-xl  md:text-4xl text-primary font-light">
-              Two Bedroom flat detached apartment
+              {property?.title}
             </span>
             <div className="w-1/4 flex">
               {[1, 2, 3, 4, 5].map((star) => (
@@ -146,20 +181,20 @@ const Property = () => {
               </div>
 
               {bwidth.index === 1 ? (
-                <p
-                  className="py-3 text-base md:text-xl text-secondary capitalize"
-                  ame
-                >
+                <p className="py-3 text-base md:text-xl text-secondary capitalize">
                   {" "}
-                  Type of rent range not available for this property
+                  {property?.prices?.daily ||
+                    "Type of rent range not available for this property"}
                 </p>
               ) : bwidth.index === 2 ? (
-                <p className="py-3 text-5xl text-secondary capitalize">
-                  #100000
+                <p className="py-3 text-base md:text-xl text-secondary capitalize">
+                  {property?.prices?.monthly ||
+                    "Type of rent range not available for this property"}
                 </p>
               ) : bwidth.index === 3 ? (
-                <p className="py-3 text-5xl text-secondary capitalize" ame>
-                  #900000{" "}
+                <p className="py-3 text-base md:text-xl text-secondary capitalize">
+                  {property?.prices?.yearly ||
+                    "Type of rent range not available for this property"}
                 </p>
               ) : (
                 ""
@@ -173,11 +208,8 @@ const Property = () => {
           </div>
           <div className="flex md:flex-row flex-col w-full  gap-2 ">
             {" "}
-            <button className="bg-secondary h-[50px] md:h-auto w-full md:w-1/3 py-2 font-semibold gap-2 transition duration-200 ease-in-out justify-center   focus-within:outline focus-within:text-secondary hover:scale-95 focus-within:outline-secondary focus-within:bg-transparent flex items-center text-white rounded-md outline-none">
-              {" "}
-              <AiOutlineBook /> Book Apartment
-            </button>{" "}
-            <button className="bg-secondary h-[50px] md:h-auto w-full md:w-1/3 py-3 font-semibold gap-2 transition duration-200 ease-in-out justify-center  focus-within:outline focus-within:text-secondary hover:scale-95 focus-within:outline-secondary focus-within:bg-transparent flex items-center text-white rounded-md outline-none">
+           
+            <button className="bg-secondary pt-[20px] md:h-auto w-full md:flex-1 py-3 font-semibold gap-2 transition duration-200 ease-in-out justify-center  focus-within:outline focus-within:text-secondary hover:scale-95 focus-within:outline-secondary focus-within:bg-transparent flex items-center text-white rounded-md outline-none">
               {" "}
               <AiOutlineMessage />
               Message Lister
@@ -191,24 +223,21 @@ const Property = () => {
             className={`cursor-pointer hover:text-secondary p-2 ${
               descwidth.index === 1 ? "text-black" : "text-gray-500"
             }`}
-            onClick={() => handleDescWidth(1)}
-          >
+            onClick={() => handleDescWidth(1)}>
             Description
           </li>
           <li
             className={`cursor-pointer hover:text-secondary p-2 ${
               descwidth.index === 2 ? "text-black" : "text-gray-500"
             }`}
-            onClick={() => handleDescWidth(2)}
-          >
+            onClick={() => handleDescWidth(2)}>
             Ratings
           </li>
           <li
             className={`cursor-pointer hover:text-secondary p-2 ${
               descwidth.index === 3 ? "text-black" : "text-gray-500"
             }`}
-            onClick={() => handleDescWidth(3)}
-          >
+            onClick={() => handleDescWidth(3)}>
             Amenities
           </li>
         </ul>
@@ -221,15 +250,10 @@ const Property = () => {
       </div>
 
       {descwidth.index === 1 ? (
-        <p
-          className="py-3 w-full md:w-3/5 px-[1rem] md:pl-[5rem] text-base font-light leading-10 text-black capitalize"
-          ame
-        >
+        <p className="py-3 w-full md:w-3/5 px-[1rem] md:pl-[5rem] text-base font-light leading-10 text-black capitalize">
           {" "}
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur
-          architecto quo natus quisquam. Recusandae eligendi nesciunt possimus
-          ipsam expedita consequatur beatae eum, soluta nam illum sapiente quas
-          deserunt fugiat vero.
+         {property?.desc} <br/>
+         {property?.amenities?.desc}
         </p>
       ) : descwidth.index === 2 ? (
         <div className=" overflow-y-auto p-1 py-3 w-[99%] md:w-[90%] flex flex-col  px-[1rem] md:pl-[5rem] scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-blue-200 h-auto  max-h-[60vh] ">
@@ -255,7 +279,7 @@ const Property = () => {
         </div>
       ) : descwidth.index === 3 ? (
         <p className="py-3 w-full md:w-3/5 px-[1rem]  md:pl-[5rem] text-2xl md:text-5xl text-black capitalize">
-          <Amenities />
+          <Amenities item={property?.amenities}/>
         </p>
       ) : (
         ""
@@ -275,24 +299,24 @@ const Property = () => {
           // pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log("slide change")}
-        >
-          {[1, 2, 3, 4, 5, 6].map((item) => (
+          onSlideChange={() => console.log("slide change")}>
+          {property?.images?.map((item) => (
             <SwiperSlide
-              className="w-full md:w-[var(--card-width)] h-fit rounded overflow-hidden relative"
-              key={item}
-            >
+              className="w-full  md:w-[var(--card-width)] h-fit rounded overflow-hidden relative"
+              key={item}>
               <div className="w-[30px] absolute bottom-3 right-3 text-2xl  z-[88888] text-white cursor-pointer hover:text-3xl transition-all flex items-center justify-center h-[30px]">
                 <AiOutlineExpand
-                  onClick={() => setImageScaled("/assets/house2.jpg")}
+                  onClick={() => setImageScaled(item)}
                   className=""
                 />
               </div>
+            <div className="absolute top-0 left-0 w-full h-full bg-black/50">
 
-              {dataLoaded ? (
+            </div>
+              {property?.images ? (
                 <img
                   className="w-full h-full object-cover"
-                  src="/assets/house1.jpg"
+                  src={item}
                   alt=""
                 />
               ) : (
@@ -318,8 +342,8 @@ const Property = () => {
           Related Propeerties
         </h1>
         <div className="flex flex-wrap justify-center gap-6">
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-            <Card propertyPage={true} dataLoaded={dataLoaded} key={item} />
+          {similarProperties?.map((item) => (
+            <Card click={handleRelatedPropertyClick}  item={item} key={item._id} />
           ))}
         </div>
       </section>
